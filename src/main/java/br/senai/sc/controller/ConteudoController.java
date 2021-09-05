@@ -13,10 +13,4 @@ public class ConteudoController {
     }
 
 
-
-    /*@GetMapping("/conteudo/conteudoList")
-    public String list(Model model){
-        model.addAttribute("conteudo", conte...)
-    }*/
-
 }
