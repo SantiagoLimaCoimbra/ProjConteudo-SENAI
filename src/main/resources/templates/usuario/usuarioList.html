@@ -39,7 +39,42 @@
     </nav>
 
 
-    <h2>usuario</h2>
+    <div class="container container-funcionario table-responsive">
+
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr class="table-dark">
+                    <th>Código</th>
+                    <th>Nome</th>
+                    <th>Turma</th>
+                    <th>Ano</th>
+                    <!--<th colspan="3">
+                        Cargo
+                    </th>-->
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="usuario : ${usuarios}">
+                    <td th:text="${usuario.id}"></td>
+                    <td th:text="${usuario.nome}"></td>
+                    <td th:text="${usuario.turma}"></td>
+                    <td th:text="${usuario.ano}"></td>
+                    <!--<td th:text="${funcionario.cargo}"></td>-->
+                    <td class="td-controle">
+                        <a th:href="@{'/usuario/usuarioEdit/'+${usuario.id}}" class="btn btn-outline-dark">
+                            <i class="far fa-edit"></i>
+                        </a>
+                    </td>
+                    <td class="td-controle">
+                        <a th:onclick="|showModalDeletar('usuario', ${usuario.id})|" class="btn btn-outline-danger">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
 
 
     <!--JS-->

@@ -8,7 +8,7 @@ public class UsuarioController {
 
     @GetMapping("/usuario/usuarioList")
     public String usuari(){
-        return "usuarioList";
+        return "usuario/usuarioList";
     }
 
 }

@@ -10,7 +10,7 @@ public interface ConteudoService {
     public Conteudo findByNome(String nome);
     public List<Conteudo> findAll();
     public String validarConteudo(Conteudo conteudo);
-    public List<Conteudo> findByNomeNot(String nome);
+    //public List<Conteudo> findByNomeNot(String nome);
 
     public boolean save(Conteudo conteudo);
     public boolean deleteById(Long id);

@@ -30,27 +30,27 @@ public class ConteudoServiceImple implements ConteudoService{
     }
 
     @Override
-    public String validarConteudo(Conteudo cargo) {
+    public String validarConteudo(Conteudo conteudo) {
         String error = null;
         Conteudo c;
         if (conteudo.getId() == null) {//Novo
-            c = conteudoRepository.findByNome(cargo.getNome());
+            c = conteudoRepository.findByNome(conteudo.getNome());
             if ( c != null){
-                error = "Cargo já existe.";
+                error = "Conteudo já existe.";
             }
         } else {//Conteudo Existente
-            c = conteudoRepository.findByIdNotAndNome(cargo.getId(), cargo.getNome());
+            c = conteudoRepository.findByIdNotAndNome(conteudo.getId(), conteudo.getNome());
             if ( c != null){
-                error = " Já existe um cargo com esse nome.";
+                error = " Já existe um conteudo com esse nome.";
             }
         }
         return error;
     }
 
-    @Override
+    /*@Override
     public List<Conteudo> findByNomeNot(String nome) {
         return ConteudoRepository.findByNomeNot(nome);
-    }
+    }*/
 
     @Override
     public boolean save(Conteudo conteudo) {
