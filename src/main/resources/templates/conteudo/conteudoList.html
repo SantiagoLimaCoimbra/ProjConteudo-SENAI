@@ -39,7 +39,57 @@
     </nav>
 
 
-    <h2><strong>conteudo LIST</strong></h2>
+    <center>
+        <div class="row">
+
+            <div class="col">
+                <div th:each="conteudo : ${conteudos}" class="card" style="width: 25rem;">
+                    <!--<img th:src="@{/galeria/galeria/mostrarImagem{imagem} (imagem=${obra.nomeImagem})}" class="card-img-top" alt="...">-->
+                    <div class="card-body">
+                        <h5 th:text="${conteudo.nome}" class="card-title">Nome do Conteudo</h5>
+                        <p th:text="${conteudo.descricao}" class="card-text">descrição</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <!-- NOME DO USUARIO AAA <li th:text="${obra.nomeArtista}" class="list-group-item">NOME DO ARTISTA</li>-->
+                        <!--<li th:text="${obra.tipo}" class="list-group-item">tipo de obra</li>-->
+                        <li th:text="${#dates.format(conteudo.data, 'dd/MM/yyyy')}" class="list-group-item">data do conteudo</li>
+                    </ul>
+                    <ul>
+                        <td class="td-controle">
+                            <a th:href="@{'/conteudo/conteudoEdit/'+${conteudo.id}}" class="btn btn-outline-dark">
+                                <i class="far fa-edit"></i>
+                            </a>
+                        </td>
+                        <td class="td-controle">
+                            <a th:onclick="|showModalDeletar('conteudo', ${conteudo.id})|" class="btn btn-outline-danger">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </td>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </center>
+
+    <!--MODAL DELETAR-->
+    <div class="modal" tabindex="-1" id="modalDeletar">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modal-header-color">
+                    <h5 class="modal-title">Aviso !</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Você deseja deletar este conteudo?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-outline-danger" th:onclick="deletar()">Deletar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 

@@ -39,7 +39,71 @@
     </nav>
 
 
-    <h2><strong>conteudo ADD</strong></h2>
+    <!--TEXTO-->
+    <div id="texto">
+        <h2><strong>CADASTRO DE CONTEUDO</strong></h2>
+    </div>
+
+    <!--FORMULARIO-->
+    <div class="container form-cadastro">
+
+        <!--enctype="multipart/form-data"-->
+
+        <form class="formulario" th:action="@{/conteudo/save}"
+              method="post"
+              th:object="${conteudo}">
+
+            <div th:if="${erro}" class="alert alert-danger">
+                <span th:text="${erroMsg}"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control"
+                       id="floatingInputId" placeholder="Código"
+                       disabled th:field="*{id}">
+                <label for="floatingInputId">Código</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control"
+                       id="floatingInputNome" placeholder="Nome do Conteudo"
+                       th:field="*{nome}" required>
+                <label for="floatingInputNome">Nome do Conteudo</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control"
+                       id="floatingInputDescricao" placeholder="Descrição do conteudo"
+                       th:field="*{descricao}" required>
+                <label for="floatingInputNome">Descrição do conteudo</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="date" class="form-control"
+                       id="floatingInputDataConteudo" placeholder="Data em que foi postado o conteudo"
+                       th:field="*{dataConteudo}" required>
+                <label for="floatingInputDataConteudo">Data do Conteudo</label>
+            </div>
+
+
+            <div class="row">
+                <div class="col">
+                    <a th:href="@{@{/conteudo/conteudoList}}"
+                       class="btn btn-secondary btn-form">
+                        <i class="fa fa-backspace"></i> Voltar
+                    </a>
+                </div>
+                <div class="col">
+                    <button class="btn btn-success btn-form"
+                            type="submit">
+                        <i class="fa fa-save"></i> Salvar
+                    </button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
 
 
 
